@@ -1,0 +1,85 @@
+.navbarFixedTop {
+    width: 100vw;
+
+    margin-bottom: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(1.5px);
+}
+
+
+.navbarContainer {
+
+    width: 100%;
+    max-width: 1106px;
+
+    padding: 22px 34px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 40px;
+
+    flex-wrap: nowrap;
+
+}
+
+.logoContainer {
+    cursor: pointer;
+
+    height: 28px;
+    width: 148px;
+    min-width: 148px;
+
+    background-image: url('/images/svg/logo.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.searchInputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+
+    gap: 16px;
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    width: 100%;
+}
+
+.searchInputContainer input {
+    all: unset; /* Quita todos los estilos predeterminados */
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .logoContainer {
+        height: 32px;
+        width: 45px;
+        min-width: 45px;
+        background-image: url('/favicon.svg');
+    }
+    .navbarContainer {
+        padding: 22px 26px;
+        gap: 24px;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+
+    .logoContainer {
+        height: 26px;
+        width: 36px;
+        min-width: 36px;
+   }
+}

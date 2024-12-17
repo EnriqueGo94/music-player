@@ -28,13 +28,11 @@ La estructura de carpetas está organizada siguiendo las convenciones de **Next.
 ```plaintext
 music-player/
 ├── public/                 # Archivos estáticos (imágenes, íconos)
-│   ├── next.svg
-│   ├── vercel.svg
 │   └── favicon.ico
 ├── src/                    # Código fuente principal
 │   ├── app/                # Carpeta principal con App Router
-│   │   ├── layout.js       # Layout global para la aplicación
-│   │   ├── page.js         # Página principal "/"
+│   │   ├── layout.jsx       # Layout global para la aplicación
+│   │   ├── page.jsx         # Página principal "/"
 │   │   └── favorites/      # Página "/favorites"
 │   │       ├── page.js     # Página de canciones favoritas
 │   │
