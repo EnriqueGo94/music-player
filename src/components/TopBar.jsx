@@ -2,6 +2,7 @@
 import styles from '~/styles/top-bar/top-bar.module.css';
 import SearchIcon from '@mui/icons-material/Search';
 import { useEffect, useState } from 'react';
+import { CloseIcon } from 'next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon';
 
 export default function TopBar() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,7 +17,7 @@ export default function TopBar() {
   }, []);
 
   useEffect(() => {
-    if (filteredSuggestions.length > 1) {
+    if (filteredSuggestions.length > 0) {
       setShowSuggestions(true);
     } else {
       setShowSuggestions(false);
@@ -37,7 +38,7 @@ export default function TopBar() {
     localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
 
     try {
-      alert(`Search results fetched for: ${searchTerm}`);
+      // alert(`Search results fetched for: ${searchTerm}`);
     } catch (error) {
       console.error('Error al realizar la búsqueda:', error);
     }
@@ -67,6 +68,17 @@ export default function TopBar() {
     }
   };
 
+  const handleDeleteSuggestion = (suggestionToDelete) => {
+    const updatedHistory = searchHistory.filter(
+      (item) => item !== suggestionToDelete
+    );
+    setSearchHistory(updatedHistory);
+
+    localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+
+    setFilteredSuggestions(updatedHistory);
+  };
+
   return (
     <div className={styles.navbarMainContainer}>
       <div className={styles.navbarContainer}>
@@ -75,7 +87,7 @@ export default function TopBar() {
           className={`${showSuggestions && styles.searchInputContainerWithSuggestions} ${styles.searchInputContainer}`}
           onSubmit={handleSubmit}
         >
-          <SearchIcon/>
+          <SearchIcon />
           <input
             type="text"
             placeholder="Search artist"
@@ -88,15 +100,24 @@ export default function TopBar() {
           {showSuggestions && filteredSuggestions.length > 0 && (
             <ul className={styles.suggestionsList}>
               {filteredSuggestions.map((suggestion, index) => (
-                <li
-                  key={index}
-                  onMouseDown={(e) => e.preventDefault()} // Evita que el input pierda foco al hacer clic
-                  onClick={() => {
-                    setSearchTerm(suggestion);
-                    setShowSuggestions(false);
-                  }}
-                >
-                  {suggestion}
+                <li key={index} className={styles.suggestionItem}>
+                  <span
+                    onClick={() => {
+                      setSearchTerm(suggestion);
+                      setShowSuggestions(false);
+                    }}
+                  >
+                    {suggestion}
+                  </span>
+                  <button
+                    type="button"
+                    className={styles.deleteButton}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => handleDeleteSuggestion(suggestion)}
+                    aria-label="Delete suggestion"
+                  >
+                    <CloseIcon fontSize="small" />
+                  </button>
                 </li>
               ))}
             </ul>
