@@ -1,13 +1,13 @@
 import { IBM_Plex_Sans } from 'next/font/google';
-import SearchIcon from '@mui/icons-material/Search';
 import '~/styles/globals.css';
-import styles from '~/styles/layout.module.css';
+import TopBar from '~/components/TopBar';
+import styles from '~/styles/index/layout.module.css';
 
 // Configura las fuentes de Google
 const ibm_sans = IBM_Plex_Sans({
   subsets: ['latin'], // Subconjunto de caracteres
-  weight: ['400', '700'], // Pesos específicos (normal y bold)
-  variable: '--font-IBM-sans', // Variable CSS para la fuente Roboto
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  variable: '--font-IBM-sans',
 });
 
 export const metadata = {
@@ -17,18 +17,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <body className={ibm_sans.variable}>
-        <div className={styles.navbarFixedTop}>
-          <div className={styles.navbarContainer}>
-            <div className={styles.logoContainer}></div>
-            <div className={styles.searchInputContainer}>
-              <SearchIcon/>
-              <input type="text" placeholder="Search artist" />
-            </div>
-          </div>
-        </div>
-        {children}
+        <TopBar />
+        <div className={styles.pageContainer}>{children}</div>
       </body>
     </html>
   );

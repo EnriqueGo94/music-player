@@ -1,0 +1,25 @@
+
+.mainContainer {
+    width: 100%;
+    max-width: var(--width-body);
+    padding: 22px 34px;
+}
+
+.searchTermContainer {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-family: var(--font-global), sans-serif;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+.searchTermContainerTitle  {
+    font-weight: 200;
+}
+
+.searchTermContainerTherm {
+    font-weight: 600;
+}
