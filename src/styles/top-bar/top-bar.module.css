@@ -44,6 +44,8 @@
 }
 
 .searchInputContainer {
+
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,8 +53,10 @@
 
     gap: 16px;
 
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(230, 230, 230);
     border-radius: 8px;
+
+    background-color: #fff;
 
     width: 100%;
 }
@@ -60,6 +64,10 @@
 .searchInputContainer input {
     all: unset; /* Quita todos los estilos predeterminados */
     width: 100%;
+}
+
+.searchInputContainerWithSuggestions{
+    border-radius: 8px 8px 0 0;
 }
 
 .navButtonsContainer {
@@ -94,6 +102,36 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+
+.suggestionsList {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    outline: 1px solid rgb(230, 230, 230);
+    border-top: none;
+
+    border-radius: 0 0 8px 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    z-index: 10;
+}
+
+.suggestionsList li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestionsList li:hover {
+    background-color: #f0f0f0;
+    transition: all 0.15s ease-in-out;
 }
 
 
