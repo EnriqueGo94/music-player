@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { fetchSongs } from '~/api/deezer';
 import styles from '~/styles/song-list/song-list.module.css';
 
+import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineTwoTone';
+
 export default function SongList({ searchQuery = 'eminem' }) {
   const [songs, setSongs] = useState([]);
   const [error, setError] = useState(null);
@@ -52,6 +54,10 @@ export default function SongList({ searchQuery = 'eminem' }) {
                 : {}
             }
           >
+
+            <div className={styles.playIconContainer}>
+              <PlayCircleOutlineTwoToneIcon/>
+            </div>
             <div className={styles.songListItemContent}>
               <p className={styles.songTitle}>{song.title}</p>
               <p className={styles.songArtist}>{song.artist.name}</p>
