@@ -79,3 +79,9 @@
 }
 
 
+@media (max-width: 425px) {
+    .searchInputContainer {
+        padding: 12px 16px;
+        gap: 8px;
+    }
+}

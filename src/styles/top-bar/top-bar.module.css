@@ -30,6 +30,14 @@
 
 }
 
+.groupButtons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: nowrap;
+}
+
 .logoContainer {
     cursor: pointer;
 
@@ -44,30 +52,6 @@
 }
 
 
-.navButtonsContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-}
-
-.navButtonsContainer a {
-    text-decoration: none;
-    color: #000000;
-    padding: 8px;
-    font-weight: 600;
-    font-size: 16px;
-}
-
-.navButtonsContainer a:hover {
-    color: var(--color-hover);
-}
-
-.active {
-    color: var(--color-accent) !important;
-}
-
-
 .profileContainer {
     width: 50px;
     height: 50px;
@@ -79,10 +63,10 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 
-    .desktopSearchBar{
-        display: none!important;
+    .desktopSearchBar {
+        display: none !important;
 
     }
 
@@ -98,12 +82,19 @@
 }
 
 
-
 @media (max-width: 425px) {
 
     .logoContainer {
         height: 26px;
         width: 36px;
         min-width: 36px;
+    }
+
+    .navbarContainer {
+        gap: 22px;
+    }
+
+    .groupButtons {
+        gap: 22px;
     }
 }

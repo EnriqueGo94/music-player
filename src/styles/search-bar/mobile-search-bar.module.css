@@ -1,44 +1,51 @@
-.containerMobileSearchBar{
+.containerMobileSearchBar {
     position: relative;
 }
 
-.containerSearchBar{
+.containerSearchBar {
     display: flex;
+    width: calc(100vw - 178px);
+
     position: absolute;
     top: -50%;
-    left: 0;
-
-    width: 50vw;
-
+    right: -40px;
 }
 
 
-.mobileBtnSearch{
+.mobileBtnSearch {
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
 
+    /*Eliminar estilos predeterminados para focus*/
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+
     background-color: #fff;
 }
 
 
-.mobileBtnSearch:hover{
+.mobileBtnSearch:hover {
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
 
     color: var(--color-accent);
+    transition: all 0.15s ease-in-out;
 }
 
 
+@media (min-width: 601px) {
+    .containerMobileSearchBar {
+        display: none !important;
+    }
+}
 
-
-
-
-@media (min-width: 801px) {
-    .containerMobileSearchBar{
-        display: none!important;
+@media (max-width: 425px) {
+    .containerSearchBar {
+        width: calc(100vw - 122px);
+        right: -50px;
     }
 }
