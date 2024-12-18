@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={ibm_sans.variable}>
+      <body className={ibm_sans.variable} style={{minHeight: '300px'}}>
         <TopBar />
         <div className={styles.pageContainer}>{children}</div>
       </body>

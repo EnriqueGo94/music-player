@@ -47,5 +47,6 @@
     .containerSearchBar {
         width: calc(100vw - 122px);
         right: -50px;
+        min-width: 178px;
     }
 }
