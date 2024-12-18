@@ -7,9 +7,13 @@ import { useEffect, useRef, useState } from 'react';
 export default function MobileSearchBar() {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
   const searchBarRef = useRef(null);
+  const searchInputRef = useRef(null);
 
   const handleSearchIconClick = () => {
     setSearchBarVisible(true);
+    setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 0);
   };
 
   const handleFormSubmit = () => {
@@ -40,7 +44,7 @@ export default function MobileSearchBar() {
 
       {isSearchBarVisible && (
         <div className={styles.containerSearchBar}>
-          <SearchBar onFormSubmit={handleFormSubmit} />
+          <SearchBar onFormSubmit={handleFormSubmit} ref={searchInputRef} />
         </div>
       )}
     </div>

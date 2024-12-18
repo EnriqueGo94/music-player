@@ -2,10 +2,10 @@
 import styles from '~/styles/search-bar/search-bar.module.css';
 import SearchIcon from '@mui/icons-material/Search';
 import { CloseIcon } from 'next/dist/client/components/react-dev-overlay/internal/icons/CloseIcon';
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { useSearchStore } from '~/store/searchStore';
 
-export default function SearchBar({ className, onFormSubmit }) {
+export default forwardRef(function SearchBar({ className, onFormSubmit }, ref) {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]); // Histrial de búsquedas
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
@@ -94,6 +94,7 @@ export default function SearchBar({ className, onFormSubmit }) {
     >
       <SearchIcon />
       <input
+        ref={ref}
         type="text"
         placeholder="Search artist"
         autoComplete="on"
@@ -130,4 +131,4 @@ export default function SearchBar({ className, onFormSubmit }) {
       )}
     </form>
   );
-}
+});
