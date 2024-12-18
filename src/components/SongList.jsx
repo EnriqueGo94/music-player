@@ -41,6 +41,7 @@ export default function SongList({ searchQuery = 'eminem' }) {
       )}
       {error && <p>{error}</p>}
       <div className={styles.songListContainer}>
+        {/*TODO añadir loadings para cuando se esté realizando la búsuqeda*/}
         {songs.map((song) => (
           <div
             key={song.id}
@@ -51,7 +52,7 @@ export default function SongList({ searchQuery = 'eminem' }) {
                 : {}
             }
           >
-            <div className={styles.songListContent}>
+            <div className={styles.songListItemContent}>
               <p className={styles.songTitle}>{song.title}</p>
               <p className={styles.songArtist}>{song.artist.name}</p>
               <p className={styles.songAlbum}>{song.album.title}</p>
