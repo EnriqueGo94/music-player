@@ -1,0 +1,104 @@
+
+.searchTermContainer {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-family: var(--font-global), sans-serif;
+    flex-wrap: nowrap;
+    gap: 16px;
+
+    margin-bottom: 50px;
+}
+
+.searchTermContainerTitle {
+    font-weight: 200;
+    padding: 0;
+    margin: 0;
+}
+
+.searchTermContainerTherm {
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
+.songListContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.songListItem {
+
+    position: relative;
+    height: 0; /* Ajuste flexible */
+    padding-bottom: 100%; /* Hace que el elemento sea cuadrado */
+    border-radius: 16px;
+
+    background-image: url('/song-list/images/webp/corchea-musical.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+.songListItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent, transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.songListContent {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 18px;
+    z-index: 2;
+}
+
+.songListContent p{
+    padding: 0;
+    margin: 0;
+}
+
+.songTitle {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.songArtist {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+.songAlbum {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 400;
+}

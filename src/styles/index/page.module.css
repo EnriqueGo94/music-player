@@ -4,26 +4,3 @@
     max-width: var(--width-body);
     padding: 22px 34px;
 }
-
-.searchTermContainer {
-    display: flex;
-    width: fit-content;
-    justify-content: center;
-    align-items: center;
-    font-size: 32px;
-    font-family: var(--font-global), sans-serif;
-    flex-wrap: nowrap;
-    gap: 16px;
-}
-
-.searchTermContainerTitle  {
-    font-weight: 200;
-    padding: 0;
-    margin: 0;
-}
-
-.searchTermContainerTherm {
-    font-weight: 600;
-    padding: 0;
-    margin: 0;
-}

@@ -21,8 +21,6 @@
     /*Eliminar estilos predeterminados para focus*/
     -webkit-tap-highlight-color: transparent;
     outline: none;
-
-    background-color: #fff;
 }
 
 
