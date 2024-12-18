@@ -17,7 +17,41 @@ Desarrollar una aplicación web que permita a los usuarios **buscar canciones**,
 - **Estilos**: Tailwind CSS / CSS Modules
 - **HTTP Requests**: Axios
 - **Reproductor**: HTML5 Audio API
-- **Gestión del estado**: React Hooks (useState, useEffect)
+- **Gestión del estado global**: Zustand
+- **Reactividad y componentes**: React Hooks (useState, useEffect)
+
+---
+
+## 🔄 **Técnicas Destacadas**
+
+### 1. **Reutilización de Componentes**
+Se implementó el componente `SearchBar`, reutilizado tanto para la versión de escritorio como para dispositivos móviles. Esto permitió mantener un código más limpio, modular y eficiente.
+
+- **Componentes**:
+    - `SearchBar`: Maneja las búsquedas de los usuarios y la sugerencia basada en el historial.
+    - `MobileSearchBar`: Integra el `SearchBar` para versiones móviles con una funcionalidad de visibilidad condicional.
+
+---
+
+### 2. **Gestión de Estado Global con Zustand**
+Se utilizó **Zustand** para manejar el estado global del término de búsqueda. Esto permitió que diferentes componentes (como `SearchBar` y `page.jsx`) puedan acceder al término actual sin necesidad de prop drilling.
+
+- **Ventajas de Zustand**:
+    - No requiere `Provider` como React Context.
+    - API simple y directa.
+    - Ligera y eficiente para el manejo de estado.
+
+---
+
+### 3. **Reactividad en Sugerencias de Búsqueda**
+El historial de búsqueda se almacena en **LocalStorage** y se utiliza para:
+- Mostrar sugerencias basadas en términos previamente buscados.
+- Permitir seleccionar una sugerencia que rellene automáticamente el campo de búsqueda y envíe el formulario.
+
+**Características:**
+- Actualización dinámica del historial.
+- Filtrado en tiempo real mientras el usuario escribe.
+- Eliminación de sugerencias innecesarias.
 
 ---
 

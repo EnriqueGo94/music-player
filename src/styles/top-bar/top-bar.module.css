@@ -43,32 +43,6 @@
     background-position: center;
 }
 
-.searchInputContainer {
-
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 24px;
-
-    gap: 16px;
-
-    border: 1px solid rgb(230, 230, 230);
-    border-radius: 8px;
-
-    background-color: #fff;
-
-    width: 100%;
-}
-
-.searchInputContainer input {
-    all: unset; /* Quita todos los estilos predeterminados */
-    width: 100%;
-}
-
-.searchInputContainerWithSuggestions{
-    border-radius: 8px 8px 0 0;
-}
 
 .navButtonsContainer {
     display: flex;
@@ -105,73 +79,27 @@
 }
 
 
-.suggestionsList {
-    position: absolute;
-    top: 45px;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    outline: 1px solid rgb(230, 230, 230);
-    border-top: none;
+@media (max-width: 800px) {
 
-    border-radius: 0 0 8px 8px;
-    max-height: 150px;
-    overflow-y: auto;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-    z-index: 10;
+    .desktopSearchBar{
+        display: none!important;
+
+    }
+
 }
 
-.suggestionItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-.suggestionItem span {
-    flex-grow: 1;
-}
-
-.deleteButton {
-    background: none;
-    border: none;
-    color: rgb(143, 143, 143);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.deleteButton:hover {
-    color: #595959;
-    transition: all 0.15s ease-in-out;
-}
-
-.suggestionsList li:hover {
-    background-color: #f0f0f0;
-    transition: all 0.15s ease-in-out;
-}
-
-
-@media screen and (max-width: 800px) {
+@media (max-width: 900px) {
     .logoContainer {
         height: 32px;
         width: 45px;
         min-width: 45px;
         background-image: url('/favicon.svg');
     }
-
-    .navbarContainer {
-        padding: 22px 26px;
-        gap: 24px;
-    }
-
 }
 
-@media screen and (max-width: 425px) {
+
+
+@media (max-width: 425px) {
 
     .logoContainer {
         height: 26px;

@@ -1,0 +1,44 @@
+.containerMobileSearchBar{
+    position: relative;
+}
+
+.containerSearchBar{
+    display: flex;
+    position: absolute;
+    top: -50%;
+    left: 0;
+
+    width: 50vw;
+
+}
+
+
+.mobileBtnSearch{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff;
+}
+
+
+.mobileBtnSearch:hover{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color-accent);
+}
+
+
+
+
+
+
+@media (min-width: 801px) {
+    .containerMobileSearchBar{
+        display: none!important;
+    }
+}
