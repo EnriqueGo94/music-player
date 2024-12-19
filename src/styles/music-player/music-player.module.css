@@ -21,7 +21,7 @@
 
 .playerContainerShow {
     bottom: 0;
-    transition: all 0.5s ease-in-out;
+    transition: bottom 0.5s ease-in-out;
 }
 
 .playerContent {
@@ -90,12 +90,12 @@
 }
 
 .controls {
+    flex: 2;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     gap: 10px;
 }
 
@@ -107,6 +107,7 @@
 }
 
 .progressContainer{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,4 +157,8 @@
     background: white;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.songTime{
+    font-size: 14px;
 }

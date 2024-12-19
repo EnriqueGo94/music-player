@@ -4,6 +4,7 @@ import styles from '~/styles/music-player/music-player.module.css';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import VolumeDownOutlinedIcon from '@mui/icons-material/VolumeDownOutlined';
+import {formatTime} from '~/utils/formatTime';
 
 export default function MusicPlayer({
   audioSrc,
@@ -95,7 +96,7 @@ export default function MusicPlayer({
             {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
           </button>
           <div className={styles.progressContainer}>
-            <p>{currentTime.toFixed(0)}</p>
+            <p className={styles.songTime}>{formatTime(currentTime)}</p>
             <input
               type="range"
               min="0"
@@ -106,7 +107,7 @@ export default function MusicPlayer({
               onMouseUp={handleSeekEnd} // Finaliza arrastre
               className={styles.progressBar}
             />
-            <p>{duration.toFixed(0)}</p>
+            <p className={styles.songTime}>{formatTime(duration)}</p>
           </div>
         </div>
 

@@ -10,8 +10,8 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
   const [songs, setSongs] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [activeSongId, setActiveSongId] = useState(null); // Estado para la canción seleccionada
 
-  // TODO Mantener el icono de reproduccion en el item mientras la canción se está escuchando
   useEffect(() => {
     if (searchQuery) {
       const getSongs = async () => {
@@ -34,6 +34,11 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
       getSongs();
     }
   }, [searchQuery]);
+
+  const handleSongClick = (song) => {
+    setActiveSongId(song.id); // Actualiza la canción activa
+    onSongSelected(song); // Notifica al padre
+  };
 
   return (
     <div>
@@ -62,15 +67,18 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
           songs.map((song) => (
             <div
               key={song.id}
-              className={styles.songListItem}
+              className={`${styles.songListItem} ${activeSongId === song.id ? styles.activeSong : ''}`}
               style={
                 song.album.cover_medium
                   ? { backgroundImage: `url(${song.album.cover_medium})` }
                   : {}
               }
-              onClick={() => onSongSelected(song)}
+              onClick={() => handleSongClick(song)}
             >
-              <div className={styles.playIconContainer}>
+              <div
+                className={`${styles.playIconContainer} 
+                ${activeSongId === song.id ? styles.activeSong : ''}`}
+              >
                 <PlayCircleOutlineTwoToneIcon />
               </div>
               <div className={styles.songListItemContent}>

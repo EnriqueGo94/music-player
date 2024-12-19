@@ -68,6 +68,10 @@
     transform: scale(1.05);
 }
 
+.songListItem.activeSong  {
+    transform: scale(1.05);
+}
+
 .songListItem::before {
     content: '';
     position: absolute;
@@ -153,12 +157,15 @@
 }
 
 
-/*TODO desactivar el hover cuando se reproduzca la canción*/
 .songListItem:hover .playIconContainer {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.1);
 }
 
+.songListItem .activeSong {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
 
 
 /* Skeleton Loader */
