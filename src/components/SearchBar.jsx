@@ -6,11 +6,15 @@ import { forwardRef, useEffect, useState } from 'react';
 import { useSearchStore } from '~/store/searchStore';
 
 export default forwardRef(function SearchBar({ className, onFormSubmit }, ref) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState();
   const [searchHistory, setSearchHistory] = useState([]); // Histrial de búsquedas
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const setSearchedTerm = useSearchStore((state) => state.setSearchedTerm); // Acción para actualizar el estado global
+
+  useEffect(() => {
+    handleSubmit(new Event('submit'), 'Eminem');
+  }, []);
 
   useEffect(() => {
     const storedHistory =

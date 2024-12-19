@@ -7,10 +7,8 @@ import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineT
 import MusicOffIcon from '@mui/icons-material/MusicOff';
 import { useMusicStore } from '~/store/musicStore';
 
-export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
-
+export default function SongList({ searchQuery = '', onSongSelected }) {
   const { isPlaying, currentSongId, setIsPlaying } = useMusicStore();
-
 
   const [songs, setSongs] = useState([]);
   const [error, setError] = useState(null);
@@ -46,11 +44,10 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
       // Notificar al padre para cargar la nueva canción
       onSongSelected(song);
     }
-
   };
 
   return (
-    <div style={{marginBottom: '120px'}}>
+    <div style={{ marginBottom: '120px' }}>
       {searchQuery ? (
         <div className={styles.searchTermContainer}>
           <p className={styles.searchTermContainerTitle}>Search results for:</p>
