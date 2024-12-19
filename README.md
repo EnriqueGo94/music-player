@@ -118,11 +118,11 @@ music-player/
 │   │   ├── top-bar/        # Estilos de la barra superior
 │   │   └── index/          # Estilos generales
 │   │
-│   ├── utils/              # Funciones de utilidad
-│   │   └── formatTime.js   # Función para formatear el tiempo del reproductor
-│   │
-│   └── assets/             # Recursos como imágenes o íconos locales
-│
+│   └── utils/              # Funciones de utilidad
+│       └── formatTime.js   # Función para formatear el tiempo del reproductor
+│   
+│   
+├── .env.local              # Variables de entorno
 ├── .gitignore              # Archivos y carpetas ignorados por git
 ├── .prettierrc             # Configuración de Prettier para formateo del código
 ├── eslint.config.mjs       # Configuración de ESLint para linting
