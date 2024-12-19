@@ -6,11 +6,12 @@ import styles from '~/styles/song-list/song-list.module.css';
 import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineTwoTone';
 import MusicOffIcon from '@mui/icons-material/MusicOff';
 
-export default function SongList({ searchQuery = 'eminem' }) {
+export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
   const [songs, setSongs] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // TODO Mantener el icono de reproduccion en el item mientras la canción se está escuchando
   useEffect(() => {
     if (searchQuery) {
       const getSongs = async () => {
@@ -67,6 +68,7 @@ export default function SongList({ searchQuery = 'eminem' }) {
                   ? { backgroundImage: `url(${song.album.cover_medium})` }
                   : {}
               }
+              onClick={() => onSongSelected(song)}
             >
               <div className={styles.playIconContainer}>
                 <PlayCircleOutlineTwoToneIcon />
@@ -79,7 +81,14 @@ export default function SongList({ searchQuery = 'eminem' }) {
             </div>
           ))
         ) : (
-          <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '10px'}}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
             <MusicOffIcon />
             <p>There are no songs to show</p>
           </div>

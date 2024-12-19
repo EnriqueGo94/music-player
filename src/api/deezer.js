@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://deezerdevs-deezer.p.rapidapi.com/search';
-const API_KEY = '1a82feef2cmshe9ca5833b261e2ep17ae2cjsn1cb09defbdc3';
+const API_KEY = '9e373905damsh2161c19282e520ap10fee0jsnf57cdf05f423';
 const API_HOST = 'deezerdevs-deezer.p.rapidapi.com';
 
 export const fetchSongs = async (query, type = 'track') => {

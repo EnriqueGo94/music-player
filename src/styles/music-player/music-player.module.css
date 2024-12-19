@@ -1,0 +1,159 @@
+.playerContainer {
+    position: fixed;
+    bottom: -200px;
+    right: 0;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+    color: #000000;
+    padding: 16px 24px;
+    gap: 10px;
+
+    box-shadow: 0 -4px 60px 0 rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(2px);
+
+    z-index: 100;
+}
+
+.playerContainerShow {
+    bottom: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.playerContent {
+    width: 100%;
+
+    max-width: 1200px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.songInfo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.coverSong{
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+
+    border-radius: 4px;
+
+    background-image: url('/song-list/images/webp/corchea-musical.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.songText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    max-width: 200px;
+
+    overflow: hidden;
+
+    color: #000000;
+}
+
+.songTitle{
+    font-size: 13px;
+    font-weight: 600;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.artistName{
+    font-size: 13px;
+    font-weight: 400;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.controls {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.playPauseButton {
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.progressContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.progressBar {
+    width: 100%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: #444;
+    border-radius: 4px;
+    height: 8px;
+}
+
+.progressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volumeControl {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.volumeBar {
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: #444;
+    border-radius: 4px;
+    height: 6px;
+    width: 100px;
+}
+
+.volumeBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
