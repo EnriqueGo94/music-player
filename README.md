@@ -197,5 +197,4 @@ http://localhost:3000
 - **Nombre**: Enrique Gómez Castellano
 - **Correo Electrónico**: [enriqueml.94@hotmaill.com](mailto:enriqueml.94@hotmaill.com)
 - **GitHub**: [https://github.com/EnriqueGo94](https://github.com/EnriqueGo94)
-- **LinkedIn
-  **: [https://www.linkedin.com/in/enrique-gomez-castellano/](https://www.linkedin.com/in/enrique-gomez-castellano/)  
+- **LinkedIn**: [https://www.linkedin.com/in/enrique-gomez-castellano/](https://www.linkedin.com/in/enrique-gomez-castellano/)  
