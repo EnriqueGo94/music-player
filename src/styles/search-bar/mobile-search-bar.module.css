@@ -17,10 +17,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /*Eliminar estilos predeterminados para focus*/
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
 }
 
 

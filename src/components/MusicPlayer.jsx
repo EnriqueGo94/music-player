@@ -7,13 +7,12 @@ import VolumeDownOutlinedIcon from '@mui/icons-material/VolumeDownOutlined';
 import { formatTime } from '~/utils/formatTime';
 import { useMusicStore } from '~/store/musicStore';
 
-
 export default function MusicPlayer({
   audioSrc,
   albumCover,
   songTitle,
   artistName,
-  songId
+  songId,
 }) {
   const { isPlaying, setIsPlaying, setCurrentSongId } = useMusicStore();
 
@@ -28,9 +27,19 @@ export default function MusicPlayer({
       audioRef.current.load(); // Carga la nueva pista
       audioRef.current.play(); // Reproduce la pista automáticamente
       setIsPlaying(true); // Actualiza el estado
-      setCurrentSongId(songId)
+      setCurrentSongId(songId);
     }
-  }, [audioSrc]);
+  }, [audioSrc, songId]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play(); // Reanuda la canción
+      } else {
+        audioRef.current.pause(); // Pausa la canción
+      }
+    }
+  }, [isPlaying]);
 
   // Actualiza el progreso del audio
   const handleTimeUpdate = () => {
@@ -100,7 +109,9 @@ export default function MusicPlayer({
           <button onClick={togglePlayPause} className={styles.playPauseButton}>
             {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
           </button>
-          <div className={`${ styles.progressContainer } ${styles.desktopProgress}`}>
+          <div
+            className={`${styles.progressContainer} ${styles.desktopProgress}`}
+          >
             <p className={styles.songTime}>{formatTime(currentTime)}</p>
             <input
               type="range"
@@ -108,8 +119,10 @@ export default function MusicPlayer({
               max="100"
               value={(currentTime / duration) * 100 || 0} // Tiempo actual
               onMouseDown={handleSeekStart} // Inicia arrastre
-              onChange={handleProgressChange} // Movimiento
               onMouseUp={handleSeekEnd} // Finaliza arrastre
+              onTouchStart={handleSeekStart} // Inicia arrastre en móviles
+              onTouchEnd={handleSeekEnd} // Finaliza arrastre en móviles
+              onChange={handleProgressChange} // Movimiento
               className={styles.progressBar}
               style={{
                 '--progress': `${(currentTime / duration) * 100}%`,
@@ -145,7 +158,7 @@ export default function MusicPlayer({
           ></audio>
         )}
       </div>
-      <div className={`${ styles.progressContainer } ${styles.mobileProgress}`}>
+      <div className={`${styles.progressContainer} ${styles.mobileProgress}`}>
         <p className={styles.songTime}>{formatTime(currentTime)}</p>
         <input
           type="range"
@@ -153,8 +166,10 @@ export default function MusicPlayer({
           max="100"
           value={(currentTime / duration) * 100 || 0} // Tiempo actual
           onMouseDown={handleSeekStart} // Inicia arrastre
-          onChange={handleProgressChange} // Movimiento
           onMouseUp={handleSeekEnd} // Finaliza arrastre
+          onTouchStart={handleSeekStart} // Inicia arrastre en móviles
+          onTouchEnd={handleSeekEnd} // Finaliza arrastre en móviles
+          onChange={handleProgressChange} // Movimiento
           className={styles.progressBar}
           style={{
             '--progress': `${(currentTime / duration) * 100}%`,

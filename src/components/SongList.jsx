@@ -9,7 +9,7 @@ import { useMusicStore } from '~/store/musicStore';
 
 export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
 
-  const { isPlaying, currentSongId } = useMusicStore();
+  const { isPlaying, currentSongId, setIsPlaying } = useMusicStore();
 
 
   const [songs, setSongs] = useState([]);
@@ -40,11 +40,17 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
   }, [searchQuery]);
 
   const handleSongClick = (song) => {
-    onSongSelected(song); // Notifica al padre
+    if (currentSongId === song.id) {
+      setIsPlaying(!isPlaying); // Reanuda o pausa la canción actual
+    } else {
+      // Notificar al padre para cargar la nueva canción
+      onSongSelected(song);
+    }
+
   };
 
   return (
-    <div>
+    <div style={{marginBottom: '120px'}}>
       {searchQuery ? (
         <div className={styles.searchTermContainer}>
           <p className={styles.searchTermContainerTitle}>Search results for:</p>

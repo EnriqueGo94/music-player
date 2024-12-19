@@ -213,6 +213,12 @@
     margin-top: 8px;
 }
 
+@media (max-width: 800px) {
+    .searchTermContainer {
+        flex-direction: column;
+    }
+
+}
 
 @media (max-width: 600px) {
     .searchTermContainer {
