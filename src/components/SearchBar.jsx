@@ -87,6 +87,13 @@ export default forwardRef(function SearchBar({ className, onFormSubmit }, ref) {
     setFilteredSuggestions(updatedHistory);
   };
 
+  const handleSuggestionSelect = (e, suggestion) => {
+    e.preventDefault(); // Previene conflictos con el foco o cierre del menú
+    setSearchTerm(suggestion);
+    setShowSuggestions(false);
+    handleSubmit(new Event('submit'), suggestion);
+  };
+
   return (
     <form
       className={`${showSuggestions ? styles.searchInputContainerWithSuggestions : ''} ${styles.searchInputContainer} ${className || ''}`}
@@ -108,11 +115,8 @@ export default forwardRef(function SearchBar({ className, onFormSubmit }, ref) {
           {filteredSuggestions.map((suggestion, index) => (
             <li key={index} className={styles.suggestionItem}>
               <span
-                onClick={() => {
-                  setSearchTerm(suggestion);
-                  setShowSuggestions(false);
-                  handleSubmit(new Event('submit'), suggestion);
-                }}
+                onMouseDown={(e) => handleSuggestionSelect(e, suggestion)} // Desktop
+                onTouchStart={(e) => handleSuggestionSelect(e, suggestion)} // Mobile
               >
                 {suggestion}
               </span>
