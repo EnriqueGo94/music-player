@@ -4,16 +4,20 @@ import styles from '~/styles/music-player/music-player.module.css';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import VolumeDownOutlinedIcon from '@mui/icons-material/VolumeDownOutlined';
-import {formatTime} from '~/utils/formatTime';
+import { formatTime } from '~/utils/formatTime';
+import { useMusicStore } from '~/store/musicStore';
+
 
 export default function MusicPlayer({
   audioSrc,
   albumCover,
   songTitle,
   artistName,
+  songId
 }) {
+  const { isPlaying, setIsPlaying, setCurrentSongId } = useMusicStore();
+
   const audioRef = useRef(null); // Referencia al elemento <audio>
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0); // Tiempo actual de reproducción
   const [duration, setDuration] = useState(0); // Duración total de la canción
   const [isSeeking, setIsSeeking] = useState(false); // Estado para bloquear actualización
@@ -24,6 +28,7 @@ export default function MusicPlayer({
       audioRef.current.load(); // Carga la nueva pista
       audioRef.current.play(); // Reproduce la pista automáticamente
       setIsPlaying(true); // Actualiza el estado
+      setCurrentSongId(songId)
     }
   }, [audioSrc]);
 
@@ -95,7 +100,7 @@ export default function MusicPlayer({
           <button onClick={togglePlayPause} className={styles.playPauseButton}>
             {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
           </button>
-          <div className={styles.progressContainer}>
+          <div className={`${ styles.progressContainer } ${styles.desktopProgress}`}>
             <p className={styles.songTime}>{formatTime(currentTime)}</p>
             <input
               type="range"
@@ -106,21 +111,29 @@ export default function MusicPlayer({
               onChange={handleProgressChange} // Movimiento
               onMouseUp={handleSeekEnd} // Finaliza arrastre
               className={styles.progressBar}
+              style={{
+                '--progress': `${(currentTime / duration) * 100}%`,
+              }}
             />
             <p className={styles.songTime}>{formatTime(duration)}</p>
           </div>
         </div>
 
         <div className={styles.volumeControl}>
-          <VolumeDownOutlinedIcon />
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={volume * 100}
-            onChange={handleVolumeChange}
-            className={styles.volumeBar}
-          />
+          <div className={styles.volumeContent}>
+            <VolumeDownOutlinedIcon />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={volume * 100}
+              onChange={handleVolumeChange}
+              className={styles.progressBar}
+              style={{
+                '--progress': `${volume * 100}%`,
+              }}
+            />
+          </div>
         </div>
         {audioSrc && (
           <audio
@@ -128,8 +141,26 @@ export default function MusicPlayer({
             src={audioSrc}
             onTimeUpdate={handleTimeUpdate} // Actualiza la barra de progreso automáticamente
             onLoadedMetadata={handleLoadedMetadata} // Captura la duración
+            onEnded={() => setIsPlaying(false)} // Actualiza el estado cuando termina
           ></audio>
         )}
+      </div>
+      <div className={`${ styles.progressContainer } ${styles.mobileProgress}`}>
+        <p className={styles.songTime}>{formatTime(currentTime)}</p>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={(currentTime / duration) * 100 || 0} // Tiempo actual
+          onMouseDown={handleSeekStart} // Inicia arrastre
+          onChange={handleProgressChange} // Movimiento
+          onMouseUp={handleSeekEnd} // Finaliza arrastre
+          className={styles.progressBar}
+          style={{
+            '--progress': `${(currentTime / duration) * 100}%`,
+          }}
+        />
+        <p className={styles.songTime}>{formatTime(duration)}</p>
       </div>
     </div>
   );

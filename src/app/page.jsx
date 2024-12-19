@@ -21,6 +21,7 @@ export default function Home() {
         albumCover={selectedSong.album ? selectedSong.album.cover_small : null}
         songTitle={selectedSong.title_short || null}
         artistName={selectedSong.artist ? selectedSong.artist.name : null}
+        songId={selectedSong.id ? selectedSong.id : null}
       />
     </div>
   );

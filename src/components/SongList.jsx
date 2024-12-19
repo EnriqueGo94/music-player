@@ -5,12 +5,16 @@ import styles from '~/styles/song-list/song-list.module.css';
 
 import PlayCircleOutlineTwoToneIcon from '@mui/icons-material/PlayCircleOutlineTwoTone';
 import MusicOffIcon from '@mui/icons-material/MusicOff';
+import { useMusicStore } from '~/store/musicStore';
 
 export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
+
+  const { isPlaying, currentSongId } = useMusicStore();
+
+
   const [songs, setSongs] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [activeSongId, setActiveSongId] = useState(null); // Estado para la canción seleccionada
 
   useEffect(() => {
     if (searchQuery) {
@@ -36,7 +40,6 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
   }, [searchQuery]);
 
   const handleSongClick = (song) => {
-    setActiveSongId(song.id); // Actualiza la canción activa
     onSongSelected(song); // Notifica al padre
   };
 
@@ -67,7 +70,7 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
           songs.map((song) => (
             <div
               key={song.id}
-              className={`${styles.songListItem} ${activeSongId === song.id ? styles.activeSong : ''}`}
+              className={`${styles.songListItem} ${currentSongId === song.id && isPlaying ? styles.activeSong : ''}`}
               style={
                 song.album.cover_medium
                   ? { backgroundImage: `url(${song.album.cover_medium})` }
@@ -77,7 +80,7 @@ export default function SongList({ searchQuery = 'eminem', onSongSelected }) {
             >
               <div
                 className={`${styles.playIconContainer} 
-                ${activeSongId === song.id ? styles.activeSong : ''}`}
+                ${currentSongId === song.id && isPlaying ? styles.activeSong : ''}`}
               >
                 <PlayCircleOutlineTwoToneIcon />
               </div>
