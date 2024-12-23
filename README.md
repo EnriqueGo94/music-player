@@ -14,7 +14,7 @@ información relevante usando la [API pública de Deezer](https://developers.dee
 
 ## 🛠️ **Tecnologías Utilizadas**
 
-- **Framework**: Next.js 13+
+- **Framework**: Next.js 15
 - **Lenguaje**: JavaScript (ES6+)
 - **Estilos**: Tailwind CSS / CSS Modules
 - **HTTP Requests**: Axios
